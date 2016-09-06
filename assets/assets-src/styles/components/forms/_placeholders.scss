@@ -1,0 +1,50 @@
+
+/**
+ *
+ * INPUT PLACEHOLDERS
+ *
+ * Unfortunately, placeholder text must be declared separately
+ *
+ */
+
+
+// Webkit
+::-webkit-input-placeholder {
+	font-style: $forms__placeholder-font-style;
+	color: $forms__placeholder-color;
+
+	.error & {
+		color: $forms__error-color;
+	}
+}
+
+// Firefox 4 to 18
+:-moz-placeholder {
+	font-style: $forms__placeholder-font-style;
+	color: $forms__placeholder-color;
+
+	.error & {
+		color: $forms__error-color;
+	}
+}
+
+// Firefox 19+
+::-moz-placeholder {
+	font-style: $forms__placeholder-font-style;
+	color: $forms__placeholder-color;
+
+	.error & {
+		color: $forms__error-color;
+	}
+}
+
+// IE10+
+:-ms-input-placeholder {
+	font-style: $forms__placeholder-font-style;
+	color: $forms__placeholder-color;
+
+	.error & {
+		color: $forms__error-color;
+	}
+}
+

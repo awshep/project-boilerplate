@@ -1,0 +1,281 @@
+
+/**
+ *
+ * TYPOGRAPHY
+ *
+ * Handles typography for entire site
+ *
+ */
+
+
+//// VARIABLES
+//// -------------------------------------------
+
+// Fonts
+$typography__font-primary  : sans-serif;
+$typography__font-secondary: Arial;
+
+// Font Weight
+// These should NOT be overridden as they map to standard CSS font weights
+//   - https://developer.mozilla.org/en/docs/Web/CSS/font-weight
+$typography__font-weight-thin    : 100;
+$typography__font-weight-light   : 300;
+$typography__font-weight-normal  : 400;
+$typography__font-weight-semibold: 600;
+$typography__font-weight-bold    : 700;
+
+// Body text
+$typography__body-font-family: $typography__font-primary;
+$typography__body-font-weight: $typography__font-weight-normal;
+$typography__body-font-size  : 1.4rem;
+$typography__body-line-height: 1.3;
+$typography__body-color      : $color__body-text;
+
+$typography__body-responsive: (
+	m: ('font-size': 1.5rem),
+	l: ('font-size': 2rem)
+);
+
+// Paragraph text
+$typography__p-margin         : 3rem 0;
+$typography__p-font-weight    : $typography__font-weight-normal;
+$typography__p--lead-font-size: 2rem;
+$typography__p--lead-color    : $typography__body-color;
+
+// Strong
+$typography__strong: $typography__font-weight-bold;
+
+// a links
+$typography__link-color            : $color__primary;
+$typography__link-color--hover     : darken($color__primary, 20%);
+$typography__link-font-weight      : $typography__font-weight-normal;
+$typography__link-decoration       : none;
+$typography__link-decoration--hover: none;
+$typography__link-transition       : all $global__transition-speed;
+
+// Blockquotes
+$typography__blockquote-margin   : 3rem 0;
+$typography__blockquote-color    : $typography__body-color;
+$typography__blockquote-font-size: 2.4rem;
+$typography__blockquote-font-style: italic;
+$typography__blockquote-line-height: 1.2;
+
+
+//// Headings ////
+$typography__heading-font-family    : $typography__font-primary;
+$typography__heading-font-weight    : $typography__font-weight-normal;
+$typography__heading-line-height    : 1.2;
+$typography__heading-color          : $color__primary;
+$typography__heading-color--hover   : lighten($color__primary, 10%);
+$typography__heading-color--inactive: $color__dusty-grey;
+$typography__heading-margin         : 0;
+
+//// h1 ////
+$typography__h1-font-family: $typography__heading-font-family;
+$typography__h1-font-size  : 2.8em;
+$typography__h1-font-weight: $typography__heading-font-weight;
+$typography__h1-margin     : $typography__heading-margin;
+$typography__h1-color      : $typography__heading-color;
+
+//// h2 ////
+$typography__h2-font-family: $typography__heading-font-family;
+$typography__h2-font-size  : 2em;
+$typography__h2-font-weight: $typography__heading-font-weight;
+$typography__h2-margin     : $typography__heading-margin;
+$typography__h2-color      : $typography__heading-color;
+
+//// h3 ////
+$typography__h3-font-family: $typography__heading-font-family;
+$typography__h3-font-size  : 1.5em;
+$typography__h3-font-weight: $typography__heading-font-weight;
+$typography__h3-margin     : $typography__heading-margin;
+$typography__h3-color      : $typography__heading-color;
+
+//// h4 ////
+$typography__h4-font-family : $typography__heading-font-family;
+$typography__h4-font-size   : 1.4em;
+$typography__h4-font-weight : $typography__heading-font-weight;
+$typography__h4-margin      : $typography__heading-margin;
+$typography__h4-color       : $typography__heading-color;
+$typography__h4-color--hover: $typography__heading-color--hover;
+
+//// h5 ////
+$typography__h5-font-family: $typography__heading-font-family;
+$typography__h5-font-size  : 1.2em;
+$typography__h5-font-weight: $typography__heading-font-weight;
+$typography__h5-margin     : 1.5rem 0;
+$typography__h5-color      : $color__primary;
+
+//// h6 ////
+$typography__h6-font-family: $typography__heading-font-family;
+$typography__h6-font-size  : 1.2em;
+$typography__h6-font-weight: $typography__heading-font-weight;
+$typography__h6-margin     : $typography__heading-margin;
+$typography__h6-color      : $typography__heading-color--inactive;
+
+
+//// Class definitions ////
+//// -------------------------------------------
+body {
+	@extend %body;
+}
+
+p {
+	@extend %p;
+}
+
+strong {
+	font-weight: $typography__strong;
+}
+
+a {
+	@extend %a;
+
+	// Plain, unstyled link
+	&.link-unstyled {
+		@extend %link-unstyled;
+	}
+}
+
+blockquote { 
+	@extend %blockquote;
+}
+
+h1 { @extend %h1; }
+h2 { @extend %h2; }
+h3 { @extend %h3; }
+h4 { @extend %h4; }
+h5 { @extend %h5; }
+h6 { @extend %h6; }
+
+
+
+
+
+//// Silent body text classes ////
+//// -------------------------------------------
+
+%body {
+	font-family: $typography__body-font-family;
+	font-size  : $typography__body-font-size;
+	font-weight: $typography__body-font-weight;
+	line-height: $typography__body-line-height;
+	color      : $typography__body-color;
+	// @include mq-props($typography__body-responsive);
+}
+
+%p {
+	margin: $typography__p-margin;
+	font-weight: $typography__p-font-weight;
+}
+
+%a {
+	color: $typography__link-color;
+	text-decoration: $typography__link-decoration;
+	transition: $typography__link-transition;
+	font-weight: $typography__link-font-weight;
+
+	&:hover, 
+	&:focus {
+		color: $typography__link-color--hover;
+		text-decoration: $typography__link-decoration--hover;
+
+		@include if-changed('text-decoration', $typography__link-decoration, $typography__link-decoration--hover);
+	}
+}
+
+%link-unstyled {
+	color: inherit;
+	font-weight: normal;
+	text-decoration: none;
+
+	&:hover, 
+	&:focus {
+		text-decoration: none;
+	}
+}
+
+%blockquote { 
+	margin: $typography__blockquote-margin;
+	color: $typography__blockquote-color;
+	font-size: $typography__blockquote-font-size;
+	font-style: $typography__blockquote-font-style;
+	line-height: $typography__blockquote-line-height;
+}
+
+
+
+//// Silent H1 - H6 classes ////
+//// -------------------------------------------
+
+// All headings
+%h1, %h2, %h3, %h4, %h5, %h6 {
+	margin     : $typography__heading-margin;
+	font-family: $typography__heading-font-family;
+	line-height: $typography__heading-line-height;
+	color      : $typography__heading-color;
+
+	&:first-child { margin-top   : 0; }
+	&:last-child  { margin-bottom: 0; }
+}
+
+// Heading 1
+%h1 {
+	font-size: $typography__h1-font-size;
+	font-weight: $typography__h1-font-weight;
+
+	@include if-changed('margin', $typography__heading-margin, $typography__h1-margin);
+	@include if-changed('font-family', $typography__heading-font-family, $typography__h1-font-family);
+	@include if-changed('color', $typography__heading-color, $typography__h1-color);
+}
+
+// Heading 2
+%h2 {
+	font-size: $typography__h2-font-size;
+	font-weight: $typography__h2-font-weight;
+
+	@include if-changed('margin', $typography__heading-margin, $typography__h2-margin);
+	@include if-changed('font-family', $typography__heading-font-family, $typography__h2-font-family);
+	@include if-changed('color', $typography__heading-color, $typography__h2-color);
+}
+
+// Heading 3
+%h3 {
+	font-size: $typography__h3-font-size;
+	font-weight: $typography__h3-font-weight;
+
+	@include if-changed('margin', $typography__heading-margin, $typography__h3-margin);
+	@include if-changed('font-family', $typography__heading-font-family, $typography__h3-font-family);
+	@include if-changed('color', $typography__heading-color, $typography__h3-color);
+}
+
+%h4 {
+	font-size: $typography__h4-font-size;
+	font-weight: $typography__h4-font-weight;
+
+	@include if-changed('margin', $typography__heading-margin, $typography__h4-margin);
+	@include if-changed('font-family', $typography__heading-font-family, $typography__h4-font-family);
+	@include if-changed('color', $typography__heading-color, $typography__h4-color);
+}
+
+// Heading 5
+%h5 {
+	font-size: $typography__h5-font-size;
+	font-weight: $typography__h5-font-weight;
+
+	@include if-changed('margin', $typography__heading-margin, $typography__h5-margin);
+	@include if-changed('font-family', $typography__heading-font-family, $typography__h5-font-family);
+	@include if-changed('color', $typography__heading-color, $typography__h5-color);
+}
+
+// Heading 6
+%h6 {
+	font-size: $typography__h6-font-size;
+	font-weight: $typography__h6-font-weight;
+
+	@include if-changed('margin', $typography__heading-margin, $typography__h6-margin);
+	@include if-changed('font-family', $typography__heading-font-family, $typography__h6-font-family);
+	@include if-changed('color', $typography__heading-color, $typography__h6-color);
+}
+
+

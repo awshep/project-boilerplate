@@ -1,0 +1,145 @@
+
+/**
+ *
+ * FORM SELECTS
+ *
+ * Custom and native Select/dropdowns
+ *
+ */
+
+//// DEFINITIONS
+//// -------------------------------------------
+
+// Default native select
+select {
+	max-width: $forms__select-max-width;
+	display: block;
+	width: 100%;
+}
+
+.custom-select {
+	@extend %custom-select;
+	
+	select {
+		@extend %custom-select__select;
+		@extend %custom-select__select-browser-hacks;
+	}
+
+	.icon {
+		@extend %custom-select__icon;
+	}
+}
+
+// Container for one or more custom selects
+.select-group {
+	@extend %select-group;
+}
+
+
+
+//// CUSTOM SELECT ////
+// Taken from http://codepen.io/ashepp/pen/LZRvQM
+//// -------------------------------------------
+%custom-select {
+	// required
+	position: relative;
+	overflow: hidden;
+	
+	// Custom
+	position: relative;
+	display: block;
+	height: $forms__cs-height;
+	width: 100%;
+	max-width: $forms__cs-max-width;
+	background-color: $forms__cs-bg-color;
+	border: $forms__cs-border;
+	border-radius: $forms__cs-border-radius;
+	font-size: $forms__cs-font-size;
+	font-family: $forms__cs-font-family;
+	
+	// Optional
+	&:hover,
+	&:focus {
+		background-color: $forms__cs-bg-color--hover;
+	}
+
+	&.custom-select--alt {
+		border-color: $color__primary;
+
+		select {
+			color: $color__primary;
+		}
+	}
+}
+
+// Remove all styling from native select/dropdown
+// 1. padding to ensure text doesn't run under arrow
+%custom-select__select {
+	padding: 0 #{$forms__cs-padding-right + 2rem} 0 $forms__cs-padding-left; // [1]
+	width: 100%;
+	height: 100%;
+	color: $forms__cs-font-color;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	background-color: transparent;
+	background-image: none;
+	outline: none;
+	appearance: none;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+%custom-select__select-browser-hacks {
+	// IE 10/11 hacks to hide native dropdown arrow
+	@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+		&::-ms-expand {
+			display: none;
+		}
+		&:focus::-ms-value {
+			background: transparent;
+			color: $forms__cs-font-color;
+		}
+	}
+	
+	// Firefox hack - remove focus outline
+	&:-moz-focusring {
+		color: transparent;
+		text-shadow: 0 0 0 #000;
+	}
+	
+	// Firefox hack - hides native dropdown arrow
+	// Extra width (arrow) is clipped by overflow: hidden on .custom-select
+	// padding ensures text stays within .custom-select
+	@-moz-document url-prefix() {
+		// width: 120%;
+		// width: calc(100% + 43px);
+		// padding: 0 54px 0 5px;
+	}
+}
+
+%custom-select__icon {
+	position: absolute;
+	top: 50%;
+	right: $forms__cs-arrow-pos-right;
+	color: $forms__cs-arrow-color;
+	transform: translateY(-50%);
+	pointer-events: none;
+}
+
+%select-group {
+	@include mq($from: s) {
+		display: flex;
+		width: 40rem;
+
+		.custom-select:not(:last-child) {
+			border-right: 0;
+		}
+	}
+
+	@include mq($from: ml) {
+		margin-left: 2rem;
+	}
+}

@@ -1,0 +1,23 @@
+
+/**
+ *
+ * Form Radio Buttons
+ *
+ * Includes custom radio buttons
+ *
+ */
+
+
+//// DEFINITIONS
+//// -------------------------------------------
+
+input[type="radio"] {
+	@extend %radio;
+}
+
+
+//// SILENT CLASSES
+//// -------------------------------------------
+%radio {
+	content: "";
+}

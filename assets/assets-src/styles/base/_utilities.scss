@@ -1,0 +1,154 @@
+
+/**
+* Mixins, Functions, and animations
+*
+*/
+
+
+// Get a variable map value
+// usage; width: get-map-value($somemap, 'desktop')
+@function get-map-value($map, $key) {
+	@if map-has-key($map, $key) {
+		@return map-get($map, $key);
+	} @else {
+		@debug "#{$key} does not exist in the map #{$map}. Property omitted.";
+	}
+}
+
+// Retrieve z-index value from $zindex-layers defined in _variables.scss
+// usage:
+//   z-index: get-z("modal");
+@function get-z($layer) {
+	@if map-has-key($zindex-layers, $layer) {
+		@return map-get($zindex-layers, $layer);
+	} @else {
+		@debug "#{$layer} does not exist in the $zindex-layers map. Property omitted.";
+	}
+}
+
+// Print property ONLY if the value is different from the original
+// Prevents repeating property declarations
+@mixin if-changed ($prop-name, $val-original, $val-override) {
+	@if $val-original != $val-override {
+		// Different; render out the property with the override value.
+		#{$prop-name}: $val-override;
+	}
+
+	// Otherwise, no change, do not render the override value.
+}
+
+// Vertically center align an element
+// this method can cause elements to be blurry due to the element being placed on a “half pixel”. 
+// A solution for this is to set its parent element to... transform-style: preserve-3d;
+@mixin vertical-align($position: relative) {
+	position: $position;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+
+/*
+* Truncate text to ensure it doesn't overflow its container.
+* Possible $overflow values are: clip, ellipsis, or a string
+* Note: This will only work on single lines, not multiple lines
+*/
+@mixin truncateText($overflow: ellipsis) {
+	overflow: hidden;
+	text-overflow: $overflow;
+	white-space: nowrap;
+}
+
+
+// Create an element that maintains a given aspect ratio at any width
+// Include mixin in the parent contain, with an immediate child of .aspect-ratio-child
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+	
+    &:before {
+        display: block;
+        content: " ";
+        width: 100%;
+        padding-top: ($height / $width) * 100%;
+    }
+
+    > .aspect-ratio-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+
+@mixin triangle($direction, $width, $height, $color, $color--hover) {
+	@if $direction == 'left' {
+		$height: $height/2;
+
+		border-width: $height $width $height 0;
+		border-color: transparent $color transparent transparent;
+		
+		&:hover {
+			border-right-color: $color--hover;
+		}    
+	}
+	
+	@if $direction == 'right' {
+		$height: $height/2;
+
+		border-width: $height 0 $height $width;
+		border-color: transparent transparent transparent $color;
+
+		&:hover {
+			border-left-color: $color--hover;
+		}
+	}
+
+	@if $direction == 'up' {
+		$width: $width/2;
+
+		border-width: 0 $width $height $width;
+		border-color: transparent transparent $color transparent;
+		
+		&:hover {
+			border-bottom-color: $color--hover;
+		}    
+	}
+}
+
+
+
+/**
+ * Responsive Properties Generator
+ *
+ * Useful for setting up multiple tags with properties & values for different
+ * media queries, and assigning them to only one variable.
+ *
+ *
+ */
+@mixin mq-props($props-list) {
+	$everything-okay: true;
+
+	@if $props-list == false {
+		@warn "'$props-list' is false.";
+		$everything-okay: false;
+	}
+
+	@if $everything-okay {
+		@each $breakpoint, $props in $props-list {
+			// Ensure that this key exists as a breakpoint
+			@if map-has-key($mq-breakpoints, $breakpoint) {
+				// Media query-surrounded property
+				@include mq($from: $breakpoint) {
+					@each $prop, $value in $props {
+						#{$prop}: $value;
+					}
+				}
+			}
+			@else {
+				@warn 'Breakpoint `#{ $breakpoint }` does not match to sass-mq breakpoints!';
+			}
+		}
+	}
+}
+

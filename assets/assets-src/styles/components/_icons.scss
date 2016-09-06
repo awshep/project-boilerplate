@@ -1,0 +1,150 @@
+
+/**
+ *
+ * ICONS
+ *
+ * Component to create SVG icons.
+ *
+ * Usage:
+ * <svg class="icon  icon--compass">
+ * 		<use xlink:href="#icon-compass"></use>
+ * </svg>
+ *
+ * @resources
+ * http://css-tricks.com/svg-sprites-use-better-icon-fonts/
+ * http://css-tricks.com/svg-symbol-good-choice-icons/
+ */
+
+
+//// VARIABLES
+//// -------------------------------------------
+$icon__width: 2rem;
+$icon__height: 2rem;
+
+
+//// DEFINITIONS
+//// -------------------------------------------
+
+// SVG sprite. We never want to show this.
+.icons-svg {
+	display: none;
+}
+
+.icon {
+	display: inline-block;
+	width: $icon__width;
+	height: $icon__height;
+	fill: currentColor;
+    vertical-align: middle;
+}
+
+.icon--angle-down {
+	width: 1.5rem;
+	height: .9rem;
+}
+
+.icon--angle-left {
+}
+
+.icon--angle-right {
+}
+
+.icon--angle-up {
+}
+
+.icon--checkmark {
+	width: 1.9rem;
+	height: 1.3rem;
+}
+
+.icon--calendar {
+	width: 1.3rem;
+	height: 1.5rem;
+}
+
+.icon--facebook {
+}
+
+.icon--heart {
+	width: 1.4rem;
+	height: 1.3rem;
+}
+
+.icon--key {
+	width: 2.6rem;
+	height: 2.4rem;
+}
+
+.icon--linkedin {
+	width: 2.8rem;
+	height: 2.8rem;
+
+	@include mq($from: m) {
+		width: 1.8rem;
+		height: 1.8rem;			
+	}
+}
+
+.icon--long-arrow-left {
+	width: 1.4rem;
+	height: .7rem;
+}
+
+.icon--long-arrow-right {
+}
+
+.icon--long-arrow-up {
+}
+
+.icon--long-arrow-down {
+}
+
+.icon--map-marker {
+	width: .7rem;
+	height: 1.1rem;
+}
+
+.icon--play-circle {
+	width: 2.8rem;
+	height: 2.8rem;
+}
+
+.icon--play {
+}
+
+.icon--search {
+	width: 2.5rem;
+	height: 2.5rem;
+}
+
+.icon--tags {
+	width: 1.3rem;
+	height: 1.1rem;
+}
+
+.icon--twitter {
+	width: 2.8rem;
+	height: 2.4rem;
+
+	@include mq($from: m) {
+		width: 1.7rem;
+		height: 1.5rem;			
+	}
+}
+
+.icon--users {
+	width: 2.5rem;
+	height: 2.5rem;
+}
+
+.icon--vimeo {
+	width: 3rem;
+	height: 2.6rem;
+
+	@include mq($from: m) {
+		width: 1.9rem;
+		height: 1.6rem;			
+	}
+}
+
+

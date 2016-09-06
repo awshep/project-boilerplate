@@ -1,0 +1,87 @@
+
+/**
+ *
+ * FORM STRUCTURE
+ *
+ * Form element, fieldsets, rows and columns
+ *
+ */
+
+//// VARIABLES
+//// -------------------------------------------
+$form__iframe-height: 70vh;
+
+
+//// DEFINITIONS
+//// -------------------------------------------
+.form {
+	@extend %form;
+}
+
+.form__fieldset {
+	@extend %form__fieldset;
+}
+
+// Container to wrap iframes that contain forms. e.g. Open Mornings form
+.iframe-form-wrapper {
+	@extend %iframe-form-wrapper;
+}
+
+
+//// SILENT CLASSES
+//// -------------------------------------------
+%form {
+	margin: 2.5rem 0;
+}
+
+%form__fieldset {
+	display: block;
+    margin: 4rem 0 0 0;
+}
+
+// Declaring height twice for any browsers that don't support vh units
+%iframe-form-wrapper {
+	position: relative;
+	width: 100%;
+    height: 20rem;
+    height: $form__iframe-height;
+    margin: 3rem 0;
+    border: .6rem solid $color__primary;
+
+	// NOTE: this is a HEIGHT based media queries, not width
+	@media (min-height: 380px) {
+		height: 30rem;
+	    height: $form__iframe-height;
+	}
+
+	// NOTE: this is a HEIGHT based media queries, not width
+	@media (min-height: 700px) {
+		height: 56rem;
+	    height: $form__iframe-height;
+	}
+
+	// NOTE: this is a HEIGHT based media queries, not width
+	@media (min-height: 900px) {
+		height: 66rem;
+	    height: $form__iframe-height;
+	}
+
+	iframe {
+		position: absolute;
+	    top: 0;
+	    left: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+
+	// Target iPhones and iPads
+	.is-ios & {
+		height: auto;
+
+		iframe {
+			position: relative;
+		}
+	}
+}
+

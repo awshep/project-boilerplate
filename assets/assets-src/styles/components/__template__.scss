@@ -1,0 +1,92 @@
+
+/**
+ *
+ * COMPONENT NAME
+ *
+ * Small description about the component and what it does
+ *
+ */
+
+
+
+//// VARIABLES
+//// -------------------------------------------
+// - Name concisely, with full name unless abbreviation is obvious
+// 		e.g. ok to use -bg- for -background-
+// - Variables in this file should follow this format:
+// 		- $component-name__[component-type]-css-property OR other
+//      - This goes in order from generic -> specific
+
+// Defaults
+//COMPONENT-NAME__default-bg-color: $COMPONENT-NAME__default-bg-color;
+
+// Box model
+//$COMPONENT-NAME__padding: $COMPONENT-NAME__padding;
+
+// Text
+//$COMPONENT-NAME__font-family: $COMPONENT-NAME__font-family;
+
+// Other
+//$COMPONENT-NAME__transition: $COMPONENT-NAME__transition;
+
+
+//// Variation 1 ////
+//$COMPONENT-NAME__primary-color  : $COMPONENT-NAME__primary-color;
+
+//// Variation 2 ////
+//$COMPONENT-NAME__secondary-color: $COMPONENT-NAME__secondary-color;
+
+//// Variation 3 ////
+//$COMPONENT-NAME__tertiary-color : $COMPONENT-NAME__tertiary-color;
+
+
+
+//// DEFINITIONS
+//// -------------------------------------------
+.component {
+	@extend %component;
+
+	&.component--primary   { @extend %component--primary;   }
+	&.component--secondary { @extend %component--secondary; }
+	&.component--tertiary  { @extend %component--tertiary;  }
+}
+
+.component__child {
+	@extend %component__child;
+
+	&.component__child--modifier {
+		@extend %component__child--modifier;
+	}
+}
+
+//// SILENT CLASSES
+//// -------------------------------------------
+%component {
+	// Positioning
+
+	// Display
+
+	// Box model
+
+	// Colours
+
+	// Typography
+
+	// Other
+}
+
+%component--primary {
+}
+
+%component--secondary {
+}
+
+%component--tertiary {
+}
+
+%component__child {
+}
+
+%component__child--modifier {
+}
+

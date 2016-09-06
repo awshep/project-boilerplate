@@ -1,0 +1,32 @@
+
+/**
+ *
+ * Form checkboxes
+ *
+ *
+ */
+
+
+
+//// VARIABLES
+//// -------------------------------------------
+
+
+
+//// DEFINITIONS
+//// -------------------------------------------
+input[type="checkbox"] {
+	@extend %checkbox;
+}
+
+// Custom Checkbox
+// http://codepen.io/ashepp/pen/zxxdJp
+
+
+
+//// SILENT CLASSES
+//// -------------------------------------------
+%checkbox {
+	content: "";
+}
+

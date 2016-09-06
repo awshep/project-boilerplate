@@ -1,0 +1,38 @@
+
+/**
+ *
+ * Colours
+ *
+ * For naming, read: http://davidwalsh.name/sass-color-variables-dont-suck
+ * Naming generator: http://chir.ag/projects/name-that-color/
+ *
+ * Don't make up or use generic names. i.e. color__red, color_my-cool-colour
+ * Though you might want to associate a few simple colours for reference
+ *
+ * Black and white can be as HTML colours, color: black; color: white;
+ */
+
+
+//// All colours
+// In order from darkest (000) to lightest (fff)
+//// -------------------------------------------
+$color__mine-shaft: #222;
+$color__dusty-grey: #999;
+$color__matrix    : #AF5050;
+$color__silver    : #ccc;
+$color__mercury   : #e1e1e1;
+
+
+
+//// Semantic names
+//// -------------------------------------------
+// Assign colours to more meaningful and re-usable names
+// (restrict to a couple truly global colours only)
+$color__primary  : $color__matrix;
+$color__secondary: $color__mercury;
+
+
+//// Site Colours - friendly names //// 
+$color__body-bg-color: white;
+$color__body-text    : $color__mine-shaft;
+$color__error        : $color__matrix;

@@ -1,0 +1,77 @@
+
+/**
+ *
+ * General, site-wide variables
+ *
+ *
+ * Variables
+ * - Name concisely, with full name unless abbreviation is obvious
+ * 		e.g. ok to use -bg- for -background-
+ */
+
+
+//// Responsive break points ////
+// --------------------------------------------------
+// @source: https://github.com/sass-mq/sass-mq
+// These get converted to ems whether you specify px or not, so may as well use ems to keep things 
+// consistent. We have a lot of breakpoints by default, as often little tweaks need to be made at certain points
+//
+//   xs: 320px  (phone portrait)
+//    s: 480px  (phone landscape)
+//   sm: 640px
+//    m: 768px  (tablet portrait)
+//   ml: 960px  (tablet landscape)
+//    l: 1024px (desktop small)
+//   xl: 1280px (desktop mid)
+$mq-breakpoints: (
+	  xs: 20em,
+	   s: 30em,
+	  sm: 40em,
+	   m: 48em,
+	  ml: 60em,
+	   l: 64em,
+	  xl: 80em
+);
+
+// DEV TOOL: Display currently active breakpoint in the browser window. Comment out for production
+$mq-show-breakpoints: map-keys($mq-breakpoints);
+
+
+// Gutters
+// --------------------------------------------------
+// Define how much spacing/padding you want in container gutter
+$container-gutter: (
+	xs: 1.4rem,
+	 s: 2rem,
+	 m: 3rem,
+	 l: 3rem,
+	xl: 3rem,
+);
+
+
+
+// General
+// Generally used within multiple components
+// --------------------------------------------------
+$img-path                : "../../img/";
+$max-site-width          : 98rem + (map-get($container-gutter, xl) * 2);
+$global__transition-speed: .2s;
+$global__faded-opacity   : .7;
+
+
+
+// z-index management
+// ALL z-index's should be defined here. Use @function get-z($layer) in _utilities.scss
+// Usage: .my-class { z-index: get-z('menu'); }
+// --------------------------------
+$zindex-layers: (
+	'browser-upgrade': 1000,
+	'mq-helper'      : 950,
+	'modal'          : 900,
+	'menu'           : 500,
+	'default'        : 1,
+	'zero'           : 0,
+	'below'          : -1
+);
+
+

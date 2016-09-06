@@ -1,0 +1,25 @@
+
+/**
+ *
+ * FORM LABELS
+ *
+ * Custom and native Select/dropdowns
+ *
+ */
+
+label {
+	display: inline-block;
+	color: $color__primary;
+	margin: .4rem 0;
+	font-family: $typography__font-secondary;
+	font-size: 1.2rem;
+	text-transform: uppercase;
+
+	&.disabled {
+		opacity: $forms__disabled-opacity;
+	}
+
+	.error & {
+		color: $forms__error-color;
+	}
+}

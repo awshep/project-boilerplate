@@ -1,0 +1,260 @@
+
+/**
+ *
+ * BUTTONS
+ *
+ * These classes can be applied to <a>, <button>, and <input type="submit">
+ *
+ */
+
+
+//// VARIABLES
+//// -------------------------------------------
+
+// Defaults
+$buttons__default-color             : white;
+$buttons__default-color--hover      : white;
+$buttons__default-color--disabled   : mix(black, white, 10%);
+$buttons__default-bg-color          : $color__primary;
+$buttons__default-bg-color--hover   : mix(white, $color__primary, 7%);
+$buttons__default-bg-color--disabled: mix(black, $color__primary, 10%);
+
+// Box model
+$buttons__margin       : 0;
+$buttons__padding      : 0 4rem;
+$buttons__border-width : 0;
+$buttons__border-radius: 0;
+
+// Text
+$buttons__font-family   : $typography__font-secondary;
+$buttons__font-size     : 1.2rem;
+$buttons__font-weight   : $typography__font-weight-bold;
+$buttons__line-height   : 1.1;
+$buttons__text-transform: uppercase;
+
+// Other
+$buttons__transition-speed: $global__transition-speed;
+$buttons__transition      : all $buttons__transition-speed;
+
+//// Primary button ////
+$buttons__primary-color             : white;
+$buttons__primary-color--hover      : white;
+$buttons__primary-color--disabled   : mix(black, white, 10%);
+$buttons__primary-bg-color          : $color__primary;
+$buttons__primary-bg-color--hover   : mix(white, $color__primary, 6%);
+$buttons__primary-bg-color--disabled: mix(black, $color__primary, 10%);
+
+//// Secondary button ////
+$buttons__secondary-color             : white;
+$buttons__secondary-color--hover      : white;
+$buttons__secondary-color--disabled   : mix(black, white, 10%);
+$buttons__secondary-bg-color          : $color__secondary;
+$buttons__secondary-bg-color--hover   : mix(white, $color__secondary, 6%);
+$buttons__secondary-bg-color--disabled: mix(black, $color__secondary, 10%);
+
+//// Secondary button ////
+$buttons__tertiary-color             : white;
+$buttons__tertiary-color--hover      : white;
+$buttons__tertiary-color--disabled   : mix(black, white, 10%);
+$buttons__tertiary-bg-color          : $color__secondary;
+$buttons__tertiary-bg-color--hover   : mix(white, $color__secondary, 6%);
+$buttons__tertiary-bg-color--disabled: mix(black, $color__secondary, 10%);
+
+//// Larger button ////
+$buttons--large-padding  : 4rem;
+$buttons--large-font-size: 2rem;
+
+//// Smaller button ////
+$buttons--small-padding  : 1.4rem;
+$buttons--small-font-size: 1.4rem;
+
+
+//// DEFINITIONS
+//// Add/remove as needed per project
+//// -------------------------------------------
+.btn {
+	@extend %btn;
+
+	// Base appearance modifiers
+	&.btn--primary   { @extend %btn--primary;   }
+	&.btn--secondary { @extend %btn--secondary; }
+	&.btn--tertiary  { @extend %btn--tertiary;  }
+
+	// Stacking modifiers
+	&.btn--pill    { @extend %btn--pill;    }
+	&.btn--outline { @extend %btn--outline; }
+	&.btn--small   { @extend %btn--small;   }
+	&.btn--large   { @extend %btn--large;   }
+}
+
+
+//// SILENT CLASSES
+//// -------------------------------------------
+// 1. This gives us more flexibility with icons etc., but could also be
+//    inline-block if needed
+// 2. Remove default appearance, particularly on mobile OS' such as iOS
+// 3. For white text on dark backgrounds (buttons & input submits)
+%btn {
+	// Positioning
+	position: relative;
+
+	// Display
+	display: inline-block; // [1]
+
+	// Box model
+	margin: $buttons__margin;
+	padding: $buttons__padding;
+	border: $buttons__border-width solid $buttons__default-bg-color;
+	border-radius: $buttons__border-radius;
+	vertical-align: middle;
+	max-width: 28rem;
+	width: 100%;
+
+	// Colours
+	background-color: $buttons__default-bg-color;
+	color: $buttons__default-color;
+
+	// Typography
+	font-family: $buttons__font-family;
+	font-size: $buttons__font-size;
+	font-weight: $buttons__font-weight;
+	line-height: $buttons__line-height;
+	text-decoration: none;
+	text-align: center;
+	text-transform: $buttons__text-transform;
+
+	// Other
+	outline: 0;
+	appearance: none; // [2]
+	overflow: hidden;
+	cursor: pointer;
+	transition: $buttons__transition;
+	-webkit-font-smoothing: antialiased; // [3]
+	-moz-osx-font-smoothing: grayscale;  // [3]
+
+	&:hover {
+		background-color: $buttons__default-bg-color--hover;
+		border-color: $buttons__default-bg-color--hover;
+	}
+
+	&:disabled,
+	&.disabled,
+	.disabled & {
+		background-color: $buttons__default-bg-color--disabled;
+		border-color: $buttons__default-bg-color--disabled;
+		color: $buttons__default-color--disabled;
+	}
+}
+
+%btn--primary {
+	background-color: $buttons__primary-bg-color;
+	border-color: $buttons__primary-bg-color;
+	@include if-changed('color', $buttons__default-color, $buttons__primary-color);
+
+	&:hover {
+		background-color: $buttons__primary-bg-color--hover;
+		border-color: $buttons__primary-bg-color--hover;
+		@include if-changed('color', $buttons__default-color--hover, $buttons__primary-color--hover);
+	}
+
+	&:disabled,
+	&.disabled,
+	.disabled & {
+		background-color: $buttons__primary-bg-color--disabled;
+		border-color: $buttons__primary-bg-color--disabled;
+		color: $buttons__primary-color--disabled;
+	}
+}
+
+%btn--secondary {
+	background-color: $buttons__secondary-bg-color;
+	border-color: $buttons__secondary-bg-color;
+	@include if-changed('color', $buttons__default-color, $buttons__secondary-color);
+
+	&:hover {
+		background-color: $buttons__secondary-bg-color--hover;
+		border-color: $buttons__secondary-bg-color--hover;
+		@include if-changed('color', $buttons__default-color--hover, $buttons__secondary-color--hover);
+	}
+
+	&:disabled,
+	&.disabled,
+	.disabled & {
+		background-color: $buttons__secondary-bg-color--disabled;
+		border-color: $buttons__secondary-bg-color--disabled;
+		color: $buttons__secondary-color--disabled;
+	}
+}
+
+%btn--tertiary {
+	background-color: $buttons__tertiary-bg-color;
+	border-color: $buttons__tertiary-bg-color;
+	@include if-changed('color', $buttons__default-color, $buttons__tertiary-color);
+
+	&:hover {
+		background-color: $buttons__tertiary-bg-color--hover;
+		border-color: $buttons__tertiary-bg-color--hover;
+		@include if-changed('color', $buttons__default-color--hover, $buttons__tertiary-color--hover);
+	}
+
+	&:disabled,
+	&.disabled,
+	.disabled & {
+		background-color: $buttons__tertiary-bg-color--disabled;
+		border-color: $buttons__tertiary-bg-color--disabled;
+		color: $buttons__tertiary-color--disabled;
+	}
+}
+
+
+// 1. An arbitrarily large number, as using a % value here would make an
+//    ellipse shape, which is undesirable
+%btn--pill {
+	border-radius: 1000rem; // [1]
+}
+
+// Outline modifier should just make things outlined only; it should rely on the
+// other primary, secondary etc. modifiers for colour
+%btn--outline {
+	color: $buttons__default-bg-color;
+	background-color: transparent;
+
+	&:hover {
+		background-color: transparent;
+		color: $buttons__default-bg-color--hover;
+	}
+
+	&%btn--primary   { 
+		color: $buttons__primary-bg-color;
+
+		&:hover {
+			color: $buttons__primary-bg-color--hover;
+		}   
+	}
+
+	&%btn--secondary { 
+		color: $buttons__secondary-bg-color;
+
+		&:hover {
+			color: $buttons__secondary-bg-color--hover;
+		}  
+	}
+
+	&%btn--tertiary  { 
+		color: $buttons__tertiary-bg-color;  
+
+		&:hover {
+			color: $buttons__tertiary-bg-color--hover;
+		} 
+	}
+}
+
+%btn--small {
+	padding: $buttons--small-padding;
+	font-size: $buttons--small-font-size;
+}
+
+%btn--large {
+	padding: $buttons--large-padding;
+	font-size: $buttons--large-font-size;
+}

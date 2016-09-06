@@ -1,0 +1,64 @@
+
+/**
+ *
+ * Helper classes and placeholders
+ *
+ * Re-usable classes that don't belong to their own component
+ *
+ */
+
+
+ // MQ Helper
+body::before {
+	z-index: get-z('mq-helper');
+}
+
+// For links, buttons.
+%subtle-link-transition {
+	transition: background-color $global__transition-speed,
+				color $global__transition-speed,
+				border-color $global__transition-speed;
+}
+
+%background-cover-image {
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.center-align {
+	text-align: center;
+}
+
+.hidden {
+	display: none !important;
+}
+
+// Usage: <div class="responsive-iframe-wrapper">[iframe goes here]</div>
+.responsive-iframe-wrapper {
+	@extend %responsive-iframe-embed;
+}
+
+// Turns an embedded iframe (google maps, youtube, vimeo) into a responsive element
+// 1. 16:9 aspect ratio
+%responsive-iframe-embed {
+	position: relative;
+	padding-bottom: 56.25%; // [1]
+	padding-top: 2.5rem;
+	height: 0;
+	margin: 3rem 0;
+
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	// Hide any text that may have been copied over with embed code
+	p,
+	a {
+		display: none;
+	}
+}

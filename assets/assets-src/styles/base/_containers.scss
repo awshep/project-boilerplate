@@ -1,0 +1,34 @@
+
+/**
+ *
+ * Containers
+ *
+ * Contains content within given limits
+ *
+ */
+
+//// VARIABLES
+//// -------------------------------------------
+$container__max-width: $max-site-width;
+
+
+//// DEFINITIONS
+//// -------------------------------------------
+.container {
+	@extend %container;
+}
+
+
+//// SILENT CLASSES
+//// -------------------------------------------
+%container {
+	width: 100%;
+	max-width: $container__max-width;
+	margin: 0 auto;
+	padding: 0 map-get($container-gutter, xs);
+
+	@include mq($from: s) { padding: 0 map-get($container-gutter, s); }
+	@include mq($from: m) { padding: 0 map-get($container-gutter, m); }
+	@include mq($from: l) { padding: 0 map-get($container-gutter, l); }
+	@include mq($from: xl) { padding: 0 map-get($container-gutter, xl); }
+}

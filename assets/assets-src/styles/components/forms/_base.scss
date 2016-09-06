@@ -1,0 +1,84 @@
+
+/**
+ *
+ * FORMS
+ *
+ * Individual form elements
+ *
+ */
+
+
+//// VARIABLES
+//// -------------------------------------------
+
+// Placeholders
+$forms__placeholder-color     : lighten($color__body-text, 40%);
+$forms__placeholder-font-style: normal;
+
+// Form
+$forms__error-color     : $color__error;
+$forms__error-bg-color  : mix(white, $forms__error-color, 50%);
+$forms__disabled-opacity: .5;
+
+// Form group
+$forms__group-gutter    : 4rem;
+$forms__group-row-gap   : 2.6rem;
+$forms__group-mobile-gap: 2rem;
+
+// Text inputs
+$forms__inputs-height       : 5rem;
+$forms__inputs-max-width    : none;
+$forms__inputs-padding      : 1.5rem 2rem;
+$forms__inputs-bg-color     : white;
+$forms__inputs-border       : .2rem solid $color__silver;
+$forms__inputs-border--focus: .2rem solid $color__primary;
+$forms__inputs-border-radius: 0;
+$forms__inputs-font-family  : $typography__font-secondary;
+$forms__inputs-font-size    : 1.2rem;
+
+// Selects/dropdowns
+$forms__select-max-width: $forms__inputs-max-width;
+
+// Custom Select
+// 1. Font size must the 16px or larger to prevent iOS page zoom on focus
+$forms__cs-height         : $forms__inputs-height;
+$forms__cs-max-width      : $forms__inputs-max-width;
+$forms__cs-font-color     : inherit;
+$forms__cs-bg-color       : transparent;
+$forms__cs-bg-color--hover: transparent;
+$forms__cs-border-color   : $color__dusty-grey;
+$forms__cs-border         : $forms__inputs-border;
+$forms__cs-border-radius  : 0;
+$forms__cs-font-size      : 1.2rem; // [1]
+$forms__cs-font-family    : $forms__inputs-font-family;
+$forms__cs-padding-left   : 2rem;
+$forms__cs-padding-right  : $forms__cs-padding-left;
+
+// Custom Select arrows
+$forms__cs-arrow-pos-right: $forms__cs-padding-right;
+$forms__cs-arrow-color    : $color__primary;
+
+
+
+//// Shared across multiple form partials
+//// -------------------------------------------
+// Hide Radio or Checkbox
+%hide-radio-checkbox {
+	position: absolute;
+	-ms-filter: "alpha(opacity=0)";
+	opacity: 0;
+	zoom: 1;
+}
+
+
+//// Imports
+//// -------------------------------------------
+@import "checkboxes";
+@import "placeholders";
+@import "structure";
+@import "text-inputs";
+@import "labels";
+@import "selects";
+@import "radio-buttons";
+@import "checkboxes";
+

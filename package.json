@@ -1,0 +1,24 @@
+{
+  "name": "Default-gulp",
+  "version": "2.0.0",
+  "description": "Andrew gulp file",
+  "main": "gulpfile.js",
+  "author": "Andrew",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp"             : "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "jshint"           : "^2.9.1",
+    "gulp-jshint"      : "^2.0.1",
+    "gulp-ruby-sass"   : "^2.0.6",
+    "gulp-uglify"      : "^1.5.3",
+    "gulp-util"        : "^3.0.7",
+    "gulp-sourcemaps"  : "^1.6.0",
+    "gulp-include"     : "^2.2.1",
+    "gulp-clean-css"   : "^2.0.10",
+    "gulp-strip-debug" : "^1.1.0",
+    "gulp-svgstore"    : "^6.0.0",
+    "gulp-rename"      : "^1.2.2"
+  }
+}

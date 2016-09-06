@@ -1,0 +1,30 @@
+
+/**
+* Font Families
+*
+* - All @font-face definitions should be in here
+* - Taken from: http://www.paulirish.com/2009/bulletproof-font-face-implementation-syntax/
+*
+*/
+
+$fonts-directory-path: '../fonts/';
+
+
+//// Font Family Name ////
+//@font-face {
+//	font-family: 'FontFamilyName';
+//	src: url($fonts-directory-path + 'filename.eot?') format('eot'),
+//		 url($fonts-directory-path + 'filename.woff2') format('woff2'),
+//		 url($fonts-directory-path + 'filename.woff') format('woff'),
+//		 url($fonts-directory-path + 'filename.ttf') format('truetype');
+//}
+
+
+//// Font Family Name ////
+//@font-face {
+//	font-family: 'FontFamilyName';
+//	src: url($fonts-directory-path + 'filename.eot?') format('eot'),
+//		 url($fonts-directory-path + 'filename.woff2') format('woff2'),
+//		 url($fonts-directory-path + 'filename.woff') format('woff'),
+//		 url($fonts-directory-path + 'filename.ttf') format('truetype');
+//}

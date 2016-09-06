@@ -1,0 +1,71 @@
+
+/**
+ *
+ * FORM TEXT INPUTS
+ *
+ * (text, search, email, phone, ...)
+ *
+ */
+
+//// DEFINITIONS
+//// -------------------------------------------
+
+// Text inputs
+// 1. defined in _subscribe.scss
+textarea,
+input[type="text"],
+input[type="search"],
+input[type="password"],
+input[type="email"],
+input[type="tel"] {
+	@extend %text-inputs;
+
+	.error & {
+		border-color: $forms__error-color;
+	}
+}
+
+// 1. defined in _search-input.scss
+input[type="search"] {
+	&.search-input__input {
+		@extend %search-input__input !optional; // [1]
+	}
+}
+
+textarea {
+	height: auto;
+	min-height: 12rem;
+	resize: vertical;
+}
+
+
+//// SILENT CLASSES
+//// -------------------------------------------
+// 1. Overwrite incorrect border-box set on Search inputs
+// 2. For iOS devices
+%text-inputs {
+	display: block;
+	height: $forms__inputs-height;
+	width: 100%;
+	box-sizing: border-box; // [1]
+	box-shadow: none; // [2]
+	max-width: $forms__inputs-max-width;
+	padding: $forms__inputs-padding;
+	background-color: $forms__inputs-bg-color;
+	border: $forms__inputs-border;
+	border-radius: 0; // [2]
+	font-family: $forms__inputs-font-family;
+	font-size: $forms__inputs-font-size;
+	-webkit-appearance: none; // [2]
+
+	&:focus {
+		outline: none;
+		border: $forms__inputs-border--focus;
+	}
+
+	.error & {
+		border-color: $forms__error-color;
+		background-color: $forms__error-bg-color;
+	}
+}
+

@@ -1,0 +1,60 @@
+
+/**
+ *
+ * TABLES
+ *
+ */
+
+
+//// VARIABLES
+//// -------------------------------------------
+
+// Box model
+$tables__width           : 100% !default;
+$tables__margin          : 3rem 0 !default;
+$tables__font-size       : 1.4rem !default;
+$tables__tbody-text-align: left !default;
+$tables__border          : 1px solid $color__primary !default;
+$tables__bg-color        : white !default;
+
+
+
+
+//// DEFINITIONS
+//// Add/remove as needed per project
+//// -------------------------------------------
+.table {
+	@extend %table;
+
+	&.table--zebra    { @extend %table--zebra; }
+}
+
+// Wrap tables or pre elements in a div with this class
+// <div class="overflow-container">
+//		<table class="table"></table>
+// </div>
+.table-overflow-container {
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+
+//// SILENT CLASSES
+//// -------------------------------------------
+%table {
+	width: $tables__width;
+	max-width: 100%;
+	margin: $tables__margin;
+	font-size: $tables__font-size;
+
+	tbody td {
+		text-align: $tables__tbody-text-align;
+	}
+}
+
+%table--zebra {
+	tr:nth-child(even) {
+		background-color: $color__mercury;
+	}
+}
+
