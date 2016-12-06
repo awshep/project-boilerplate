@@ -1,1 +1,15 @@
-!function(){console.log("+++ Task 1: Load external Accumulate file JS: true");var e=!!document.querySelector(".acc-btn");console.log("+++ Task 2: Get button via native JS:",e);var n=!(!window.jQuery&&!window.$);console.log("+++ Task 3: jQuery available:",n);var o=document.getElementByClassName("acc-btn");o.addEventListener("click",function(e){e.preventDefault(),console.log("++++ Button clicked.")})}();
+(function() {
+	console.log('+++ Task 1: Load external Accumulate file JS: true');
+
+	// Get button via native JS
+	var el = (document.querySelector(".acc-btn")) ? true : false;
+	console.log('+++ Task 2: Get button via native JS:', el);
+
+	var jqueryCheck = (window.jQuery || window.$) ? true : false;
+	console.log('+++ Task 3: jQuery available:', jqueryCheck);
+
+	// Get button via jQuery
+	var button = $('.acc-btn');
+	console.log('+++ Task 4: Get button via jQuery: ', button);
+
+})();
